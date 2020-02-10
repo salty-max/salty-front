@@ -8,11 +8,6 @@ i18n
   // load translation using xhr -> see /public/locales
   // learn more: https://github.com/i18next/i18next-xhr-backend
   .use(Backend)
-  .init({
-    backend: {
-      ajax: axios,
-    },
-  })
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -21,6 +16,9 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    backend: {
+      ajax: axios,
+    },
     fallbackLng: 'en',
     debug: true,
 
