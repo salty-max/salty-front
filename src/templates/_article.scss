@@ -22,4 +22,37 @@
     padding-top: $pm-size-medium;
     margin-top: 0;
   }
+
+  .metas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $dark;
+    color: $light;
+
+    &-infos {
+      display: flex;
+      align-items: center;
+
+      .date {
+        color: $success;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .content {
+    h3 {
+      color: $primary;
+    }
+
+    strong {
+      color: $success;
+    }
+
+    blockquote {
+      background-color: $light;
+      border-color: $primary;
+    }
+  }
 }

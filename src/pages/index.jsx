@@ -12,7 +12,7 @@ import '../assets/scss/main.scss';
 const IndexPage = () => (
   <>
     <Layout>
-      <SEO />
+      <SEO title="Accueil" />
       <StaticQuery
         query={graphql`
           query {

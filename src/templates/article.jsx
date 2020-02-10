@@ -9,6 +9,7 @@ import 'moment/locale/fr';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Share from '../components/share';
+import Category from './category';
 
 export const query = graphql`
   query ArticleQuery($id: String!) {
@@ -24,6 +25,11 @@ export const query = graphql`
       slug
       subtitle
       content
+      category {
+        slug
+        name
+        icon
+      }
       published_at
       image {
         publicURL
@@ -42,6 +48,7 @@ const Article = ({ data }) => {
     image,
     title,
     slug,
+    category,
     subtitle,
     content,
     published_at: publishedAt,
@@ -67,12 +74,26 @@ const Article = ({ data }) => {
         >
           <h1 className="title is-size-1">{title}</h1>
         </div>
-        <Share
-          url={`${siteMetadata.url}/article/${slug}`}
-          title={`🚨New article at Salt & Paper 👇\n${title}\n`}
-          twitterHandle={siteMetadata.twitterHandle}
-        />
-
+        <div className="px-3 metas">
+          <div className="metas-infos">
+            <span>Publié le</span>
+            <Moment className="mx date" format="Do MMMM YYYY">
+              {publishedAt}
+            </Moment>
+            <span>dans</span>
+            <span className="mx tag is-success">
+              <span className="icon">
+                <i className={`fas fa-${category.icon}`} />
+              </span>
+              <span>{category.name}</span>
+            </span>
+          </div>
+          <Share
+            url={`${siteMetadata.url}/article/${slug}`}
+            title={`🚨New article at Salt & Paper 👇\n${title}\n`}
+            twitterHandle={siteMetadata.twitterHandle}
+          />
+        </div>
         <section className="section">
           <div className="content">
             <ReactMarkdown
@@ -84,9 +105,6 @@ const Article = ({ data }) => {
               }
               escapeHtml={false}
             />
-            <p>
-              <Moment format="Do MMMM YYYY">{publishedAt}</Moment>
-            </p>
           </div>
         </section>
       </article>
