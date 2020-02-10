@@ -1,5 +1,16 @@
-exports.createPages = async ({ graphql, actions }) => {  
-  const { createPage } = actions
+const fs = require('fs-extra');
+const path = require('path');
+
+exports.onPostBootstrap = () => {
+  console.log('Copying locales');
+  fs.copySync(
+    path.join(__dirname, '/src/locales'),
+    path.join(__dirname, '/public/locales'),
+  );
+};
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
   const result = await graphql(
     `
       {
@@ -7,6 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               strapiId
+              slug
             }
           }
         }
@@ -14,38 +26,39 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               strapiId
+              slug
             }
           }
         }
       }
-    `
-  )
+    `,
+  );
 
   if (result.errors) {
-    throw result.errors
+    throw result.errors;
   }
 
   // Create blog articles pages.
-  const articles = result.data.articles.edges
-  const categories = result.data.categories.edges
+  const articles = result.data.articles.edges;
+  const categories = result.data.categories.edges;
 
   articles.forEach((article, index) => {
     createPage({
-      path: `/article/${article.node.strapiId}`,
-      component: require.resolve("./src/templates/article.jsx"),
+      path: `/article/${article.node.slug}`,
+      component: require.resolve('./src/templates/article.jsx'),
       context: {
         id: article.node.strapiId,
       },
-    })
-  })
+    });
+  });
 
   categories.forEach((category, index) => {
     createPage({
-      path: `/category/${category.node.strapiId}`,
-      component: require.resolve("./src/templates/category.jsx"),
+      path: `/category/${category.node.slug}`,
+      component: require.resolve('./src/templates/category.jsx'),
       context: {
         id: category.node.strapiId,
       },
-    })
-  })
-}
+    });
+  });
+};

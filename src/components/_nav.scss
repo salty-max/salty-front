@@ -1,0 +1,19 @@
+.navbar {
+  background: $navbar-background-color;
+  background: $navbar-background-alpha;
+  &-brand {
+    font-family: 'Bungee';
+    padding: 0 $pm-size;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    .navbar-item {
+      color: $dark;
+    }
+  }
+
+  &-item {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}

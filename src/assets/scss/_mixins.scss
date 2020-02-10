@@ -1,0 +1,99 @@
+@mixin is-lighter() {
+  .is-lighter {
+    &.is-primary {
+      background-color: lighten($primary, 20);
+      &.is-outlined {
+        border-color: lighten($primary, 20);
+        color: lighten($primary, 20);
+        &:hover {
+          background-color: lighten($primary, 20);
+          border-color: lighten($primary, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-danger {
+      background-color: lighten($danger, 20);
+      &.is-outlined {
+        border-color: lighten($danger, 20);
+        color: lighten($danger, 20);
+        &:hover {
+          background-color: lighten($danger, 20);
+          border-color: lighten($danger, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-warning {
+      background-color: lighten($warning, 20);
+      &.is-outlined {
+        border-color: lighten($warning, 20);
+        color: lighten($warning, 20);
+        &:hover {
+          background-color: lighten($warning, 20);
+          border-color: lighten($warning, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-success {
+      background-color: lighten($success, 20);
+      &.is-outlined {
+        border-color: lighten($success, 20);
+        color: lighten($success, 20);
+        &:hover {
+          background-color: lighten($success, 20);
+          border-color: lighten($success, 20);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@mixin is-transparent($bgColor) {
+  &.is-transparent {
+    background-color: transparent;
+    color: $bgColor;
+    border: 1px solid transparent;
+
+    &:hover {
+      color: lighten($bgColor, 20);
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}

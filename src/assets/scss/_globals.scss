@@ -1,0 +1,62 @@
+main {
+  margin-right: $menu-size;
+}
+
+.section {
+  margin-top: $navbar-height;
+}
+
+h1.title {
+  color: $primary;
+  font-family: 'Bungee';
+}
+
+h2.subtitle {
+  color: $primary;
+}
+
+a.button,
+button.button,
+input.button {
+  border-radius: $radius-small;
+  font-weight: bold;
+  @include transition(all 0.3s ease);
+
+  &.is-outlined {
+    box-shadow: none;
+  }
+
+  &.is-small {
+    border-radius: $radius;
+    padding-left: $pm-size;
+    padding-right: $pm-size;
+  }
+}
+
+.input {
+  caret-color: $primary;
+  @include transition(all 0.3s ease);
+  &::placeholder {
+    color: $dark;
+  }
+
+  &.has-button {
+    height: calc(2.25rem + 4px);
+  }
+}
+
+.card {
+  border-radius: $radius;
+}
+
+.lead {
+  font-weight: 700;
+}
+
+.border-radius {
+  border-radius: $radius;
+}
+
+.navbar-item {
+  @include transition(all 0.3s);
+}

@@ -1,23 +1,74 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-const Card = ({ article }) => (
-  <Link to={`/article/${article.node.strapiId}`} className="uk-link-reset">
-    <div className="uk-card uk-card-muted">
-      <div className="uk-card-media-top">
-        <Img fixed={article.node.image.childImageSharp.fixed} />
-      </div>
-      <div className="uk-card-body">
-        <p className="category" className="uk-text-uppercase">
-          {article.node.category.name}
-        </p>
-        <p className="title" className="uk-text-large">
-          {article.node.title}
-        </p>
+import Share from './share';
+
+const Card = ({ article: { node } }) => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            url
+            twitterHandle
+          }
+        }
+      }
+    `,
+  );
+
+  return (
+    <div className="card">
+      <Link to={`/article/${node.slug}`}>
+        <div className="card-image">
+          <figure className="image">
+            <Img
+              className="image-wrapper"
+              fluid={node.image.childImageSharp.fluid}
+            />
+          </figure>
+          <div className="card-title">
+            <div className="card-title-mask" />
+            <h2 className="is-size-4">{node.title}</h2>
+          </div>
+        </div>
+      </Link>
+      <div className="card-content">
+        <div className="content">
+          <div className="content-header">
+            <div className="categories">
+              <Link
+                to={`/category/${node.category.slug}`}
+                className="tag is-small"
+              >
+                <span className="icon">
+                  <i className="fas fa-tag" />
+                </span>
+                <span>{node.category.name}</span>
+              </Link>
+            </div>
+            <Share
+              url={siteMetadata.url}
+              title={node.title}
+              twitterHandle={siteMetadata.twitterHandle}
+            />
+          </div>
+          <div className="excerpt">{node.subtitle}</div>
+        </div>
       </div>
     </div>
-  </Link>
-);
+  );
+};
+
+Card.propTypes = {
+  article: PropTypes.shape({
+    node: PropTypes.shape.isRequired,
+  }).isRequired,
+};
 
 export default Card;

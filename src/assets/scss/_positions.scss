@@ -1,0 +1,15 @@
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $gap-size;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: $gap-size;
+}
+
+.gap-large {
+  grid-gap: $gap-size-large;
+}

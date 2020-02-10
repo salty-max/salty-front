@@ -1,0 +1,48 @@
+.footer {
+  position: relative;
+  bottom: 0;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .socials {
+      font-size: 2rem;
+      display: flex;
+      .social {
+        &:not(:last-child) {
+          margin-right: $pm-size-medium;
+        }
+
+        &:hover {
+          i {
+            @include animation('grow_color' 1s infinite);
+          }
+        }
+
+        i {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@keyframes grow_color {
+  0% {
+    transform: scale(1);
+    color: $primary;
+  }   
+  50% {
+    transform: scale(1.2);
+    color: $light;
+  }
+  100% {
+    transform: scale(1);
+    color: $primary;
+  }          
+}

@@ -1,0 +1,36 @@
+.category-page {
+  &.section {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  .category-title {
+    position: relative;
+    padding: $pm-size-large;
+    margin-top: $navbar-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $dark;
+      opacity: .8;
+      z-index: 1;
+    }   
+  }
+  .title {
+    z-index: 2;
+    position: relative;
+    color: $light;
+  }
+
+  .articles {
+    margin-top: 0;
+  }
+}

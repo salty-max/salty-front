@@ -1,0 +1,30 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: $menu-size;
+  height: 100%;
+  margin-top: $navbar-height;
+  background-color: $menu-background-color;
+  padding: $pm-size;
+  padding-top: $pm-size-large;
+
+  &-label {
+    font-family: 'Bungee';
+  }
+
+  &-list {
+    margin-bottom: $pm-size-medium;
+    font-weight: bold;
+
+    i {
+      color: $menu-label-color;
+    }
+
+    li:hover {
+      i {
+        color: $menu-item-hover-color;
+      }
+    }
+  }
+}

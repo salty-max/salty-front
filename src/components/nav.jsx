@@ -1,46 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 
-const Nav = () => (
-  <div>
-    <div>
-      <nav className="uk-navbar-container" data-uk-navbar>
-        <div className="uk-navbar-left">
-          <ul className="uk-navbar-nav">
-            <li>
-              <Link to="/">Salt & Paper</Link>
-            </li>
-          </ul>
-        </div>
+const Nav = () => {
+  const [menuActive, toggleMenuActive] = useState(false);
 
-        <div className="uk-navbar-right">
-          <ul className="uk-navbar-nav">
-            <StaticQuery
-              query={graphql`
-                query {
-                  allStrapiCategory {
-                    edges {
-                      node {
-                        strapiId
-                        name
-                      }
+  return (
+    <nav
+      className="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          Salt & Paper
+        </Link>
+        <a
+          role="button"
+          className={`navbar-burger ${menuActive && 'is-active'}`}
+          aria-label="menu"
+          aria-expanded="false"
+          onClick={() => toggleMenuActive(!menuActive)}
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className={`navbar-menu ${menuActive && 'is-active'}`}>
+        <div className="navbar-start">
+          <a className="navbar-item" href="/">
+            Home
+          </a>
+          <a className="navbar-item" href="/about">
+            About
+          </a>
+        </div>
+        <div className="navbar-end">
+          <StaticQuery
+            query={graphql`
+              query {
+                allStrapiSocial {
+                  edges {
+                    node {
+                      strapiId
+                      link
+                      icon
                     }
                   }
                 }
-              `}
-              render={(data) => data.allStrapiCategory.edges.map((category, i) => (
-                <li key={category.node.strapiId}>
-                  <Link to={`/category/${category.node.strapiId}`}>
-                    {category.node.name}
-                  </Link>
-                </li>
-              ))}
-            />
-          </ul>
+              }
+            `}
+            render={(data) =>
+              data.allStrapiSocial.edges.map(
+                ({ node: { strapiId, link, icon } }) => (
+                  <a
+                    key={strapiId}
+                    className="navbar-item"
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="icon mr">
+                      <i className={`${icon}`} />
+                    </span>
+                  </a>
+                ),
+              )
+            }
+          />
         </div>
-      </nav>
-    </div>
-  </div>
-);
+      </div>
+    </nav>
+  );
+};
 
 export default Nav;

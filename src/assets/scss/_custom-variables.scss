@@ -1,0 +1,119 @@
+// Custom variables
+
+// Sizings
+$pm-size-small: 0.5rem;
+$pm-size: 1rem;
+$pm-size-medium: 2rem;
+$pm-size-large: 3rem;
+
+$gap-size: 1rem;
+$gap-size-small: 0.5rem;
+$gap-size-large: 2rem;
+
+$radius: 10px;
+$radius-small: 4px;
+$radius-round: 290486px;
+
+/** 
+ * Bulma initial variables override
+**/
+
+// Fonts
+$family-sans-serif: 'Nunito', sans-serif;
+$family-serif: 'Roboto Slab', serif;
+
+// Colors
+$primary: #6c5ce7;
+$primary-light: #a29bfe;
+$primary-dark: darken($primary, 5);
+$secondary: #fad390;
+$danger: #d63031;
+$success: #00b894;
+$white: #fff;
+$black: #000;
+$light: #dfe6e9;
+$dark: #2d3436;
+$info: #60a3bc;
+$link: #4a69bd;
+$warning: #fdcb6e;
+$grey-lighter: #b2bec3;
+$grey-darker: #636e72;
+
+/** 
+ * Bulma components variables override
+**/
+
+$body-overflow-y: auto;
+
+$section-padding: $pm-size $pm-size-medium;
+
+$text: $dark;
+$text-light: $light;
+
+$message-radius: $radius-small;
+$message-body-radius: $radius-small;
+$message-body-padding: 1rem 1.25rem;
+
+$notification-radius: $radius;
+$notification-padding: 1rem 2rem 1rem 1.5rem;
+
+// Forms
+$control-border-width: 2px;
+$input-background-color: $white;
+$input-border-color: $grey-lighter;
+$input-hover-border-color: $grey-darker;
+$input-focus-color: $primary;
+$input-color: $dark;
+$input-shadow: none;
+$input-focus-border-color: $primary;
+$input-icon-active-color: $primary;
+$input-focus-box-shadow-size: none;
+$link-visited: $primary;
+$link-hover: $primary;
+
+// Cards
+$card-header-shadow: none;
+$card-content-padding: $pm-size;
+
+// Buttons
+$button-padding-horizontal: 1.6rem;
+
+// Menu
+$menu-size: 250px;
+$menu-background-color: $light;
+$menu-item-color: $dark;
+$menu-label-color: $primary;
+$menu-item-hover-background-color: $primary;
+$menu-item-hover-color: $light;
+
+// Navbar
+$navbar-height: 5rem;
+$navbar-background-color: $primary;
+$navbar-background-alpha: linear-gradient(90deg, $primary-light 0%, $primary-dark 100%);
+$navbar-box-shadow-color: $dark;
+$navbar-item-color: $light;
+$navbar-item-hover-background-color: darken($primary, 5);
+$navbar-item-hover-color: $light;
+$navbar-offset: $navbar-height;
+
+// Footer
+$footer-background-color: $dark;
+$footer-color: $light;
+$footer-padding: $pm-size-medium;
+// Tables
+$table-color: $dark;
+$table-head-cell-color: $primary;
+$table-striped-row-even-background-color: $light;
+
+$new-colors: (
+  'white': $white,
+  'black': $black,
+  'light': $light,
+  'dark': $dark,
+  'primary': $primary,
+  'danger': $danger,
+  'warning': $warning,
+  'success': $success,
+  'info': $info,
+  'link': $link,
+);

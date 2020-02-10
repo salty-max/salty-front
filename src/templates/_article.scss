@@ -1,0 +1,25 @@
+.article {
+  .content {
+    font-family: $family-serif;
+  }
+
+  .banner {
+    background-size: cover;
+    background-position: center center;
+    background-color: #444;
+    background-blend-mode: screen;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: $navbar-height;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+  }
+
+  .section {
+    padding: $pm-size-large;
+    padding-top: $pm-size-medium;
+    margin-top: 0;
+  }
+}
