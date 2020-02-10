@@ -1,12 +1,10 @@
 import React from 'react';
 import { StaticQuery, Link, graphql } from 'gatsby';
-import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
-  const { t } = useTranslation();
   return (
     <aside className="menu">
-      <p className="menu-label">{t('sidebar.categories')}</p>
+      <p className="menu-label">Catégories</p>
       <ul className="menu-list">
         <StaticQuery
           query={graphql`
@@ -39,7 +37,7 @@ const Sidebar = () => {
           }
         />
       </ul>
-      <p className="menu-label">{t('sidebar.latests')}</p>
+      <p className="menu-label">Derniers articles</p>
       <ul className="menu-list">
         <li>
           <a href="/">

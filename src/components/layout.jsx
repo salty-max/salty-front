@@ -5,8 +5,6 @@ import Nav from './nav';
 import Sidebar from './sidebar';
 import Footer from './footer';
 
-import '../i18n';
-
 const Layout = ({ children }) => (
   <>
     <Nav />
