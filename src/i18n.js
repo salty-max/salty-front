@@ -2,7 +2,6 @@ import i18n from 'i18next';
 import Backend from 'i18next-node-fs-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
-import axios from 'axios';
 
 i18n
   // load translation using xhr -> see /public/locales
@@ -16,6 +15,21 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    backend: {
+      // path where resources get loaded from
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
+
+      // path to post missing resources
+      addPath: '/locales/{{lng}}/{{ns}}.missing.json',
+
+      // jsonIndent to use when storing json files
+      jsonIndent: 2,
+
+      // custom parser
+      parse: function(data) {
+        return data;
+      },
+    },
     fallbackLng: 'en',
     debug: true,
 
