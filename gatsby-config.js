@@ -8,7 +8,7 @@ module.exports = {
     description: "J'écis à l'encre de sel.",
     author: 'Maxime Blanc',
     twitterHandle: 'salty_max',
-    url: 'https://salt-and-paper.netlify.com',
+    url: 'http://saltandpaper.net',
   },
   plugins: [
     {
