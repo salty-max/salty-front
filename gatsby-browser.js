@@ -3,5 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+import './src/assets/scss/main.scss';
 
 // You can delete this file if you're not using it
