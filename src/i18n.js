@@ -1,5 +1,5 @@
 import i18n from 'i18next';
-import Backend from 'i18next-xhr-backend';
+import Backend from 'i18next-node-fs-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 i18n
   // load translation using xhr -> see /public/locales
   // learn more: https://github.com/i18next/i18next-xhr-backend
-  // .use(Backend)
+  .use(Backend)
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -16,9 +16,6 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    backend: {
-      ajax: axios,
-    },
     fallbackLng: 'en',
     debug: true,
 
