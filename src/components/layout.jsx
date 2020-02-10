@@ -6,7 +6,7 @@ import Seo from './seo';
 import Sidebar from './sidebar';
 import Footer from './footer';
 
-import '../i18n';
+// import '../i18n';
 
 const Layout = ({ children }) => (
   <>
