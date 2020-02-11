@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import ReactMarkdown from 'react-markdown';
 import Moment from 'react-moment';
@@ -9,7 +9,6 @@ import 'moment/locale/fr';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Share from '../components/share';
-import Category from './category';
 
 export const query = graphql`
   query ArticleQuery($id: String!) {
@@ -65,7 +64,7 @@ const Article = ({ data }) => {
         type="article"
         url={`${siteMetadata.url}/article/${slug}`}
       />
-      <article className="article">
+      <article className="page article">
         <div
           className="banner"
           style={{
@@ -74,19 +73,21 @@ const Article = ({ data }) => {
         >
           <h1 className="title is-size-1">{title}</h1>
         </div>
-        <div className="px-3 metas">
+        <div className="metas">
           <div className="metas-infos">
             <span>Publié le</span>
             <Moment className="mx date" format="Do MMMM YYYY">
               {publishedAt}
             </Moment>
             <span>dans</span>
-            <span className="mx tag is-success">
-              <span className="icon">
-                <i className={`fas fa-${category.icon}`} />
+            <Link to={`/category/${category.slug}`}>
+              <span className="mx tag is-success">
+                <span className="icon">
+                  <i className={`fas fa-${category.icon}`} />
+                </span>
+                <span>{category.name}</span>
               </span>
-              <span>{category.name}</span>
-            </span>
+            </Link>
           </div>
           <Share
             url={`${siteMetadata.url}/article/${slug}`}

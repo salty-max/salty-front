@@ -27,8 +27,8 @@ $primary: #6c5ce7;
 $primary-light: #a29bfe;
 $primary-dark: darken($primary, 5);
 $secondary: #fad390;
-$danger: #d63031;
-$success: #00b894;
+$danger: rgba(214, 48, 49, 1);
+$success: rgba(0, 184, 148, 1);
 $white: #fff;
 $black: #000;
 $light: #dfe6e9;
@@ -38,6 +38,15 @@ $link: #4a69bd;
 $warning: #fdcb6e;
 $grey-lighter: #b2bec3;
 $grey-darker: #636e72;
+
+$brand-colors: (
+  facebook: #3b5998,
+  twitter: #1da1f2,
+  googleplus: #dd4b39,
+  linkedin: #0077b5,
+  reddit: #ff4500,
+  whatsapp: #128c7e,
+);
 
 /** 
  * Bulma components variables override
@@ -89,17 +98,24 @@ $menu-item-hover-color: $light;
 // Navbar
 $navbar-height: 5rem;
 $navbar-background-color: $primary;
-$navbar-background-alpha: linear-gradient(90deg, $primary-light 0%, $primary-dark 100%);
+$navbar-background-alpha: linear-gradient(
+  90deg,
+  $primary-light 0%,
+  $primary-dark 100%
+);
 $navbar-box-shadow-color: $dark;
 $navbar-item-color: $light;
 $navbar-item-hover-background-color: darken($primary, 5);
 $navbar-item-hover-color: $light;
 $navbar-offset: $navbar-height;
+$navbar-dropdown-background-color: $primary-light;
+$navbar-dropdown-arrow: $success;
 
 // Footer
 $footer-background-color: $dark;
 $footer-color: $light;
-$footer-padding: $pm-size-medium;
+$footer-padding: $pm-size $pm-size-medium;
+$footer-height: 3rem;
 // Tables
 $table-color: $dark;
 $table-head-cell-color: $primary;

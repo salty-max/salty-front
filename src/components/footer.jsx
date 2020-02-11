@@ -5,22 +5,15 @@ const Footer = () => (
   <footer className="footer is-dark">
     <div className="content">
       <p>
-        <span>&copy;</span>
+        <span>&copy; </span>
         <span>{moment(Date.now()).format('YYYY')}</span>
-        <span>- Maxime Blanc</span>
+        <span> - Maxime Blanc</span>
       </p>
-      <div className="socials">
-        <a className="social" href="github.com/max-jellycat">
-          <span className="icon">
-            <i className="fab fa-github" />
-          </span>
-        </a>
-        <a className="social" href="twitter.com/salty_max">
-          <span className="icon">
-            <i className="fab fa-twitter" />
-          </span>
-        </a>
-      </div>
+      <p>
+        <span>Made with </span>
+        <i className="fas fa-heart has-text-danger" />
+        <span> by Jellycat Studios</span>
+      </p>
     </div>
   </footer>
 );

@@ -6,17 +6,19 @@ import ArticlesComponent from '../components/articles';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 
-import Stripes from '../images/stripes-light.png';
-
 export const query = graphql`
   query Category($id: String!) {
-    articles: allStrapiArticle(filter: { category: { id: { eq: $id } } }) {
+    articles: allStrapiArticle(
+      filter: { category: { id: { eq: $id } } }
+      sort: { fields: published_at, order: DESC }
+    ) {
       edges {
         node {
           strapiId
           title
           subtitle
           slug
+          published_at
           category {
             name
           }
@@ -44,10 +46,7 @@ const Category = ({ data }) => {
   return (
     <Layout>
       <SEO title={name} />
-      <section
-        style={{ backgroundImage: `url(${Stripes})` }}
-        className="section category-page mt-0 px-0"
-      >
+      <section className="page category-page mt-0 px-0">
         <div className="category-title">
           <div className="category-title-mask" />
           <h1 className="title is-size-2 has-text-centered">
@@ -57,7 +56,7 @@ const Category = ({ data }) => {
             <span>{name}</span>
           </h1>
         </div>
-        <ArticlesComponent articles={articles} />
+        <ArticlesComponent isCategory articles={articles} />
       </section>
     </Layout>
   );

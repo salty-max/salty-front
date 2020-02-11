@@ -1,6 +1,7 @@
 // Custom framework
 @import 'custom-variables';
 @import 'mixins';
+@import 'animations';
 @import 'sizings';
 @import 'positions';
 @import 'colors';
@@ -11,4 +12,3 @@
 @import '~bulma-extensions/bulma-checkradio/dist/css/bulma-checkradio';
 
 @include is-lighter();
-

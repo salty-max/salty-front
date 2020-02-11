@@ -3,47 +3,46 @@ import PropTypes from 'prop-types';
 
 import Card from './card';
 
-const Articles = ({ articles }) => {
+const Articles = ({ articles, isCategory }) => {
   const leftArticlesCount = 2;
   const leftArticles = articles.slice(0, leftArticlesCount);
   const rightArticles = articles.slice(leftArticlesCount, articles.length);
 
-  return (
+  const IndexArticles = () => (
     <section className="articles section">
-      <div className="tile is-ancestor">
-        <div className="tile is-parent is-vertical">
-          <div className="tile is-parent">
-            {leftArticles.map((article) => (
-              <div
-                key={`article__${article.node.id}`}
-                className="tile is-parent is-6"
-              >
-                <div className="tile is-child">
-                  <Card article={article} />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="tile is-parent">
-            {rightArticles.map((article) => (
-              <div
-                key={`article__${article.node.id}`}
-                className="tile is-parent is-4"
-              >
-                <div className="tile is-child">
-                  <Card article={article} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <h1 className="pl title is-size-4">Fresh batch</h1>
+      <div className="grid-2">
+        {leftArticles.map((article) => (
+          <Card key={`article__${article.node.id}`} article={article} />
+        ))}
+      </div>
+      <h2 className="pl pt-2 subtitle is-size-4">More reading</h2>
+      <div className="grid-3">
+        {rightArticles.map((article) => (
+          <Card key={`article__${article.node.id}`} article={article} />
+        ))}
       </div>
     </section>
   );
+
+  const CategoryArticles = () => (
+    <div className="category-articles section grid-2">
+      {articles.map((article) => (
+        <Card article={article} />
+      ))}
+    </div>
+  );
+
+  return isCategory ? <CategoryArticles /> : <IndexArticles />;
+};
+
+Articles.defaultProps = {
+  isCategory: false,
 };
 
 Articles.propTypes = {
   articles: PropTypes.array.isRequired,
+  isCategory: PropTypes.bool,
 };
 
 export default Articles;

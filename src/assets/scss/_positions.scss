@@ -4,6 +4,12 @@
   grid-gap: $gap-size;
 }
 
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: $gap-size;
+}
+
 .grid-4 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

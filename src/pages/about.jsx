@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 function AboutPage() {
   return (
     <Layout>
-      <section className="section">About</section>
+      <section className="page">About</section>
     </Layout>
   );
 }

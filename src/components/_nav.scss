@@ -15,5 +15,44 @@
   &-item {
     text-transform: uppercase;
     font-weight: bold;
+
+    &.social {
+      font-size: 1.6rem;
+    }
+  }
+
+  .navbar-dropdown {
+    .navbar-item {
+      display: flex;
+      width: 100%;
+      padding-left: $pm-size;
+      padding-right: 0;
+      color: $light;
+
+      .icon {
+        margin-right: $pm-size-small;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-end {
+    padding-right: $pm-size;
+
+    .navbar-item {
+      padding: $pm-size;
+
+      &:hover {
+        background-color: transparent;
+
+        i {
+          color: $success;
+          border-radius: $radius-rounded;
+          box-shadow: 0 0 0 0 $success;
+          animation: pulse-green 2s infinite;
+        }
+      }
+    }
   }
 }

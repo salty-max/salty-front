@@ -1,8 +1,35 @@
 import React, { useState } from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
 const Nav = () => {
   const [menuActive, toggleMenuActive] = useState(false);
+  const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
+
+  const { categories, socials } = useStaticQuery(
+    graphql`
+      query {
+        socials: allStrapiSocial {
+          edges {
+            node {
+              strapiId
+              link
+              icon
+            }
+          }
+        }
+        categories: allStrapiCategory {
+          edges {
+            node {
+              strapiId
+              name
+              icon
+              slug
+            }
+          }
+        }
+      }
+    `,
+  );
 
   return (
     <nav
@@ -29,46 +56,54 @@ const Nav = () => {
 
       <div className={`navbar-menu ${menuActive && 'is-active'}`}>
         <div className="navbar-start">
-          <a className="navbar-item" href="/">
-            Home
-          </a>
-          <a className="navbar-item" href="/about">
-            About
-          </a>
+          <Link className="navbar-item" to="/">
+            {'<Home />'}
+          </Link>
+          <Link className="navbar-item" to="/about">
+            {'<About />'}
+          </Link>
+          <div
+            className={`navbar-item has-dropdown ${categoriesDropdownOpen &&
+              'is-active'}`}
+          >
+            <a
+              onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
+              className="navbar-link"
+            >
+              Categories
+            </a>
+            <div className="navbar-dropdown">
+              {categories.edges.map(
+                ({ node: { strapiId, slug, name, icon } }) => (
+                  <Link
+                    className="navbar-item"
+                    key={strapiId}
+                    to={`/node/${slug}`}
+                  >
+                    <span className="icon">
+                      <i className={`fas fa-${icon}`} />
+                    </span>
+                    <span>{name}</span>
+                  </Link>
+                ),
+              )}
+            </div>
+          </div>
         </div>
         <div className="navbar-end">
-          <StaticQuery
-            query={graphql`
-              query {
-                allStrapiSocial {
-                  edges {
-                    node {
-                      strapiId
-                      link
-                      icon
-                    }
-                  }
-                }
-              }
-            `}
-            render={(data) =>
-              data.allStrapiSocial.edges.map(
-                ({ node: { strapiId, link, icon } }) => (
-                  <a
-                    key={strapiId}
-                    className="navbar-item"
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="icon mr">
-                      <i className={`${icon}`} />
-                    </span>
-                  </a>
-                ),
-              )
-            }
-          />
+          {socials.edges.map(({ node: { strapiId, link, icon } }) => (
+            <a
+              key={strapiId}
+              className="navbar-item social"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="icon mr">
+                <i className={`${icon}`} />
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </nav>

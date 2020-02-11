@@ -5,8 +5,6 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ArticlesComponent from '../components/articles';
 
-import Stripes from '../images/stripes-light.png';
-
 import '../assets/scss/main.scss';
 
 const IndexPage = () => (
@@ -16,7 +14,7 @@ const IndexPage = () => (
       <StaticQuery
         query={graphql`
           query {
-            allStrapiArticle {
+            allStrapiArticle(sort: { fields: published_at, order: DESC }) {
               edges {
                 node {
                   strapiId
@@ -24,6 +22,7 @@ const IndexPage = () => (
                   subtitle
                   slug
                   content
+                  published_at
                   category {
                     slug
                     name
@@ -41,10 +40,7 @@ const IndexPage = () => (
           }
         `}
         render={(data) => (
-          <section
-            style={{ backgroundImage: `url(${Stripes})` }}
-            className="index-page section"
-          >
+          <section className="index-page page">
             <ArticlesComponent articles={data.allStrapiArticle.edges} />
           </section>
         )}

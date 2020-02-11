@@ -1,9 +1,12 @@
 main {
   margin-right: $menu-size;
+  margin-bottom: $footer-height;
 }
 
-.section {
+.page {
   margin-top: $navbar-height;
+  padding-top: $pm-size;
+  padding-bottom: $pm-size;
 }
 
 h1.title {
@@ -13,6 +16,7 @@ h1.title {
 
 h2.subtitle {
   color: $primary;
+  font-family: 'Bungee';
 }
 
 a.button,
@@ -59,4 +63,16 @@ input.button {
 
 .navbar-item {
   @include transition(all 0.3s);
+}
+
+@media screen and (max-width: 1024px) {
+  .section {
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main {
+    margin-right: 0;
+  }
 }

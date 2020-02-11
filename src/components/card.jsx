@@ -1,40 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import 'moment/locale/fr';
 
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-
-import Share from './share';
 
 const Card = ({ article: { node } }) => {
   const {
-    site: { siteMetadata },
-  } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            url
-            twitterHandle
-          }
-        }
-      }
-    `,
-  );
+    slug,
+    title,
+    subtitle,
+    image,
+    category,
+    published_at: publishedAt,
+  } = node;
 
   return (
     <div className="card">
-      <Link to={`/article/${node.slug}`}>
+      <Link to={`/article/${slug}`}>
         <div className="card-image">
           <figure className="image">
             <Img
               className="image-wrapper"
-              fluid={node.image.childImageSharp.fluid}
+              fluid={image.childImageSharp.fluid}
             />
           </figure>
           <div className="card-title">
             <div className="card-title-mask" />
-            <h2 className="is-size-4">{node.title}</h2>
+            <h2 className="is-size-4">{title}</h2>
           </div>
         </div>
       </Link>
@@ -42,23 +36,18 @@ const Card = ({ article: { node } }) => {
         <div className="content">
           <div className="content-header">
             <div className="categories">
-              <Link
-                to={`/category/${node.category.slug}`}
-                className="tag is-small"
-              >
+              <Link to={`/category/${category.slug}`} className="tag is-small">
                 <span className="icon">
                   <i className="fas fa-tag" />
                 </span>
-                <span>{node.category.name}</span>
+                <span>{category.name}</span>
               </Link>
             </div>
-            <Share
-              url={siteMetadata.url}
-              title={node.title}
-              twitterHandle={siteMetadata.twitterHandle}
-            />
+            <Moment className="mx date" format="Do MMMM YYYY">
+              {publishedAt}
+            </Moment>
           </div>
-          <div className="excerpt">{node.subtitle}</div>
+          <div className="excerpt">{subtitle}</div>
         </div>
       </div>
     </div>

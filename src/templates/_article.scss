@@ -1,4 +1,6 @@
 .article {
+  margin-top: 0;
+  padding-top: 0;
   .content {
     font-family: $family-serif;
   }
@@ -18,12 +20,12 @@
   }
 
   .section {
-    padding: $pm-size-large;
     padding-top: $pm-size-medium;
     margin-top: 0;
   }
 
   .metas {
+    padding: $pm-size $pm-size-medium;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,9 +41,18 @@
         font-weight: bold;
       }
     }
+
+    .tag {
+      font-size: 1rem;
+      &:hover {
+        animation: 'pulse-green' 2s infinite;
+      }
+    }
   }
 
   .content {
+    padding: $pm-size-medium;
+
     h3 {
       color: $primary;
     }
@@ -50,9 +61,23 @@
       color: $success;
     }
 
+    img {
+      margin-top: $pm-size;
+      border-radius: $radius-small;
+    }
+
     blockquote {
       background-color: $light;
       border-color: $primary;
+      border-radius: $radius-small;
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .metas {
+    flex-direction: column;
+    padding: 1rem !important;
+    padding-top: 2rem;
   }
 }

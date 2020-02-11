@@ -1,5 +1,6 @@
 .category-page {
-  &.section {
+  // height: 100vh;
+  &.page {
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
@@ -7,7 +8,7 @@
 
   .category-title {
     position: relative;
-    padding: $pm-size-large;
+    padding: $pm-size;
     margin-top: $navbar-height;
     display: flex;
     align-items: center;
@@ -20,9 +21,8 @@
       width: 100%;
       height: 100%;
       background-color: $dark;
-      opacity: .8;
       z-index: 1;
-    }   
+    }
   }
   .title {
     z-index: 2;

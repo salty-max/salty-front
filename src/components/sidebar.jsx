@@ -2,7 +2,7 @@ import React from 'react';
 import { StaticQuery, Link, graphql } from 'gatsby';
 
 const Sidebar = () => (
-  <aside className="menu is-hidden-mobile">
+  <aside className="menu">
     <p className="menu-label">Catégories</p>
     <ul className="menu-list">
       <StaticQuery
